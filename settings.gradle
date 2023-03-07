@@ -14,3 +14,6 @@ dependencyResolutionManagement {
 }
 rootProject.name = "FitOpenPay"
 include ':app'
+include ':data'
+include ':di'
+include ':domain'

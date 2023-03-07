@@ -1,3 +1,18 @@
 <resources>
-    <string name="app_name">FitOpenPay</string>
+    <string name="app_name">MovieApp</string>
+    <string name="select_a_image">Select a image</string>
+    <string name="get_location">Get Location</string>
+    <string name="profile_tab_layout_text">Profile</string>
+    <string name="movies_tab_layout_text">Movies</string>
+    <string name="location_tab_layout_text">Location</string>
+    <string name="images_tab_layout_text">Images</string>
+    <string name="more_popular_tab_layout_text">Mas populares</string>
+    <string name="best_rated__tab_layout_text">Mejor calificadas</string>
+    <string name="best_recommendations_tab_layout_text">Mejores recomendaciones</string>
+    <string name="top_recommendations_text">Top recommendations</string>
+    <string name="top_rated_text">Top rated</string>
+    <string name="most_popular_text">Most popular</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="try_again_text">Try again</string>
 </resources>
