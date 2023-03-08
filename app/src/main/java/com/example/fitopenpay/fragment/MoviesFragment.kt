@@ -39,7 +39,9 @@ class MoviesFragment : Fragment() {
     private fun updateState(moviesData: MoviesData) {
         when (moviesData.state) {
             MoviesState.SHOW_DATA -> {
-                binding.recycler.adapter = MoviesAdapter(moviesData.movies)
+                val adapter = MoviesAdapter()
+                binding.recycler.adapter = adapter
+                adapter.submitList(moviesData.movies)
                 binding.recycler.layoutManager = LinearLayoutManager(context)
             }
             MoviesState.CONNECTION_ERROR -> {}

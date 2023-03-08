@@ -2,7 +2,6 @@ package com.example.di
 
 import com.example.data.service.MoviesApi
 import com.example.util.Constant.API_NAME
-import com.example.util.Constant.BASE_URL
 import com.example.util.Constant.MOVIES_API_KEY
 import dagger.Module
 import dagger.Provides
@@ -25,17 +24,19 @@ object ApiModule {
 
     @Provides
     fun provideOkHttpClient(): OkHttpClient {
-        return OkHttpClient.Builder()
-            .addInterceptor { chain ->
-                val defaultRequest = chain.request()
-                val defaultHttpUrl = defaultRequest.url
-                val httpUrl = defaultHttpUrl.newBuilder()
-                    .addQueryParameter(API_NAME, MOVIES_API_KEY)
-                    .build()
-                val requestBuilder = defaultRequest.newBuilder().url(httpUrl)
-                chain.proceed(requestBuilder.build())
-            }
-            .build()
+       return if (BuildConfig.BUILD_TYPE == "debug") {
+            OkHttpClient.Builder()
+                .addInterceptor { chain ->
+                    val defaultRequest = chain.request()
+                    val defaultHttpUrl = defaultRequest.url
+                    val httpUrl = defaultHttpUrl.newBuilder()
+                        .addQueryParameter(API_NAME, MOVIES_API_KEY)
+                        .build()
+                    val requestBuilder = defaultRequest.newBuilder().url(httpUrl)
+                    chain.proceed(requestBuilder.build())
+                }.build()
+        } else {
+            OkHttpClient.Builder().build() }
     }
 
     @Provides
@@ -45,7 +46,7 @@ object ApiModule {
     ): MoviesApi {
         val retrofit = Retrofit.Builder()
             .client(okHttpClient)
-            .baseUrl(BASE_URL)
+            .baseUrl(BuildConfig.BASE_URL)
             .addConverterFactory(converterFactory)
             .build()
 
