@@ -1,11 +1,11 @@
-package com.example.fitopenpay.adapter
+package com.example.appForTest.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.fitopenpay.fragment.ImagesFragment
-import com.example.fitopenpay.fragment.LocationFragment
-import com.example.fitopenpay.fragment.MoviesFragment
+import com.example.appForTest.fragment.ImagesFragment
+import com.example.appForTest.fragment.LocationFragment
+import com.example.appForTest.fragment.MoviesFragment
 
 class MoviesViewPagerAdapter(fragment: FragmentActivity) : FragmentStateAdapter(fragment) {
     override fun getItemCount(): Int = 3

@@ -1,4 +1,4 @@
-package com.example.fitopenpay.adapter
+package com.example.appForTest.adapter
 
 import android.view.LayoutInflater
 import android.view.View

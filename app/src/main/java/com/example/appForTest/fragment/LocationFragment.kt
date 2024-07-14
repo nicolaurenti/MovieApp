@@ -1,4 +1,4 @@
-package com.example.fitopenpay.fragment
+package com.example.appForTest.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater

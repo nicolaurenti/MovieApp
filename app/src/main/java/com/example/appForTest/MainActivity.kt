@@ -1,9 +1,9 @@
-package com.example.fitopenpay
+package com.example.appForTest
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.movieapp.R
-import com.example.fitopenpay.adapter.MoviesViewPagerAdapter
+import com.example.appForTest.adapter.MoviesViewPagerAdapter
 import com.example.movieapp.databinding.ActivityMainBinding
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint

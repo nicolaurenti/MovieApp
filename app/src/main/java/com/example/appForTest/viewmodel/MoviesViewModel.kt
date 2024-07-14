@@ -1,4 +1,4 @@
-package com.example.fitopenpay.viewmodel
+package com.example.appForTest.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

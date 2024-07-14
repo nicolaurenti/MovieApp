@@ -1,4 +1,4 @@
-package com.example.fitopenpay.fragment
+package com.example.appForTest.fragment
 
 import android.net.Uri
 import android.os.Bundle
@@ -9,9 +9,9 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.movieapp.databinding.FragmentImagesBinding
-import com.example.fitopenpay.viewmodel.ImageData
-import com.example.fitopenpay.viewmodel.ImageState
-import com.example.fitopenpay.viewmodel.ImagesViewModel
+import com.example.appForTest.viewmodel.ImageData
+import com.example.appForTest.viewmodel.ImageState
+import com.example.appForTest.viewmodel.ImagesViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

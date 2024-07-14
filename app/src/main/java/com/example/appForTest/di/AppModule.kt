@@ -1,4 +1,4 @@
-package com.example.fitopenpay.di
+package com.example.appForTest.di
 
 import com.example.di.ApiModule
 import com.example.di.ServiceModule

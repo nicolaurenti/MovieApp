@@ -1,4 +1,4 @@
-package com.example.fitopenpay
+package com.example.appForTest
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

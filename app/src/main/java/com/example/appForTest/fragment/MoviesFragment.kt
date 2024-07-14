@@ -1,4 +1,4 @@
-package com.example.fitopenpay.fragment
+package com.example.appForTest.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,11 +7,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.fitopenpay.adapter.MoviesAdapter
+import com.example.appForTest.adapter.MoviesAdapter
 import com.example.movieapp.databinding.FragmentMoviesBinding
-import com.example.fitopenpay.viewmodel.MoviesData
-import com.example.fitopenpay.viewmodel.MoviesState
-import com.example.fitopenpay.viewmodel.MoviesViewModel
+import com.example.appForTest.viewmodel.MoviesData
+import com.example.appForTest.viewmodel.MoviesState
+import com.example.appForTest.viewmodel.MoviesViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
