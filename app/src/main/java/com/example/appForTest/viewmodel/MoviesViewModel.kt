@@ -12,32 +12,29 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 
 @HiltViewModel
 class MoviesViewModel @Inject constructor(private val getMoviesUseCase: GetMoviesUseCase) :
     ViewModel() {
 
-    private val mutableStateLiveData: MutableLiveData<MoviesData> = MutableLiveData()
-    val state: LiveData<MoviesData>
-        get() = mutableStateLiveData
+    private val mutableMoviesState = MutableStateFlow(MoviesData(MoviesState.LOADING))
+    val moviesState: StateFlow<MoviesData> = mutableMoviesState.asStateFlow()
 
     fun getMostPopularMovies() = viewModelScope.launch {
         withContext(Dispatchers.IO) { getMoviesUseCase.getMostPopularMovies() }.let { result ->
             when (result) {
                 is CoroutineResult.Success -> {
-                    mutableStateLiveData.postValue(
-                        MoviesData(
-                            state = MoviesState.SHOW_DATA,
-                            movies = result.data,
-                        ),
-                    )
+                    mutableMoviesState.value =
+                        MoviesData(state = MoviesState.SHOW_DATA, movies = result.data)
                 }
+
                 is CoroutineResult.Failure -> {
-                    mutableStateLiveData.postValue(
-                        MoviesData(
-                            state = MoviesState.CONNECTION_ERROR,
-                            error = MOST_POPULAR_FAILED,
-                        ),
+                    mutableMoviesState.value = MoviesData(
+                        state = MoviesState.CONNECTION_ERROR,
+                        error = MOST_POPULAR_FAILED,
                     )
                 }
             }
@@ -48,19 +45,14 @@ class MoviesViewModel @Inject constructor(private val getMoviesUseCase: GetMovie
         withContext(Dispatchers.IO) { getMoviesUseCase.getTopRatedMovies() }.let { result ->
             when (result) {
                 is CoroutineResult.Success -> {
-                    mutableStateLiveData.postValue(
-                        MoviesData(
-                            state = MoviesState.SHOW_DATA,
-                            movies = result.data,
-                        ),
-                    )
+                    mutableMoviesState.value =
+                        MoviesData(state = MoviesState.SHOW_DATA, movies = result.data)
                 }
+
                 is CoroutineResult.Failure -> {
-                    mutableStateLiveData.postValue(
-                        MoviesData(
-                            state = MoviesState.CONNECTION_ERROR,
-                            error = TOP_RATED_FAILED,
-                        ),
+                    mutableMoviesState.value = MoviesData(
+                        state = MoviesState.CONNECTION_ERROR,
+                        error = TOP_RATED_FAILED,
                     )
                 }
             }
@@ -71,19 +63,14 @@ class MoviesViewModel @Inject constructor(private val getMoviesUseCase: GetMovie
         withContext(Dispatchers.IO) { getMoviesUseCase.getBestRecommendationsMovies() }.let { result ->
             when (result) {
                 is CoroutineResult.Success -> {
-                    mutableStateLiveData.postValue(
-                        MoviesData(
-                            state = MoviesState.SHOW_DATA,
-                            movies = result.data,
-                        ),
-                    )
+                    mutableMoviesState.value =
+                        MoviesData(state = MoviesState.SHOW_DATA, movies = result.data)
                 }
+
                 is CoroutineResult.Failure -> {
-                    mutableStateLiveData.postValue(
-                        MoviesData(
-                            state = MoviesState.CONNECTION_ERROR,
-                            error = BEST_RECOMMENDATIONS_FAILED,
-                        ),
+                    mutableMoviesState.value = MoviesData(
+                        state = MoviesState.CONNECTION_ERROR,
+                        error = BEST_RECOMMENDATIONS_FAILED,
                     )
                 }
             }
@@ -104,6 +91,7 @@ data class MoviesData(
 )
 
 enum class MoviesState {
+    LOADING,
     SHOW_DATA,
     CONNECTION_ERROR,
 }
